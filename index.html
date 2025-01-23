@@ -3,226 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Техсталь - Главная</title>
+    <title>ООО "Техсталь"</title>
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
         header {
-            width: 100%;
-            background-color: #222;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            font-weight: bold;
-        }
-        nav {
             background-color: #333;
             color: #fff;
-            padding: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background: #444;
+            color: #fff;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            padding: 0.5rem;
         }
         nav a {
             color: #fff;
+            margin: 0 1rem;
             text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s;
         }
         nav a:hover {
-            color: #ddd;
+            text-decoration: underline;
         }
         main {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        section h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #222;
-        }
-        section p {
-            font-size: 1.2rem;
-            line-height: 1.6;
+            padding: 1rem;
         }
         footer {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #222;
-            color: #fff;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        .contact-form {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .contact-form button {
             background-color: #333;
             color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .contact-form button:hover {
-            background-color: #555;
-        }
-        #message-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 42px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            z-index: 1000;
-        }
-        #message-modal h3 {
-            margin-top: 0;
-        }
-        #message-modal input, #message-modal textarea, #message-modal button {
-            display: block;
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        #message-modal button {
-            background-color: #333;
-            color: #fff;
-            cursor: pointer;
-        }
-        #message-modal button:hover {
-            background-color: #555;
-        }
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
+            text-align: center;
+            width: 100%; 
+            margin: 0 auto;
+            height: 50px;
+            position: fixed; 
+            bottom: 0;
             left: 0;
+            right: 0;
+        }
+        table {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 0.5rem;
+            text-align: left;
+        }
+        #contacts {
+            margin-bottom: 2rem;
         }
     </style>
-    <script>
-        function openMessageModal() {
-            document.getElementById('message-modal').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        function closeMessageModal() {
-            document.getElementById('message-modal').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-
-        function sendMessage() {
-            const fio = document.getElementById('fio').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const comments = document.getElementById('comments').value;
-
-            if (fio && email && phone) {
-                const formData = new FormData();
-                formData.append("fio", fio);
-                formData.append("email", email);
-                formData.append("phone", phone);
-                formData.append("comments", comments);
-
-                fetch("send_email.php", {
-                    method: "POST",
-                    body: formData,
-                })
-                .then(response => response.text())
-                .then(result => {
-                    alert(result);
-                    closeMessageModal();
-                })
-                .catch(error => {
-                    alert("Ошибка отправки сообщения: " + error);
-                });
-            } else {
-                alert("Пожалуйста, заполните все обязательные поля.");
-            }
-        }
-    </script>
 </head>
 <body>
     <header>
-        <h1>Техсталь</h1>
+        <h1>ООО "Техсталь"</h1>
     </header>
     <nav>
-        <a href="#about">О нас</a>
-        <a href="#services">Услуги</a>
+        <a href="#home">Главная</a>
+        <a href="#forgings">Поковки</a>
+        <a href="#castings">Литье</a>
         <a href="#contacts">Контакты</a>
     </nav>
     <main>
-        <section id="about">
-            <h2>О нас</h2>
-            <p>
-                ООО «Техсталь» обеспечивает предприятия России кованными и литыми заготовками из различных марок стали. По требованию заказчика поставка продукции осуществляется с механической обработкой и ультразвуковым контролем, поставка заготовок для АЭС с приемкой уполномоченной организации.<br>
-                Мы предлагаем поковки различной конфигурации и размеров, в т.ч. крупногабаритные, изготовленные в соответствии с требованиями установленных ГОСТ и ОСТ (ГОСТ 8479-70, ГОСТ 25054-81, ОСТ 108.030.113-87, ОСТ 108.109.01-92 и т.д.), а также по ТУ заказчика:<br>
-                1. Валы гладкие круглого и прямоугольного сечения;<br>
-                2. Валы круглого сечения с уступами;<br>
-                3. Кольца раскатные;<br>
-                4. Цилиндры с отверстиями;<br>
-                5. Плиты и штамповые кубики;<br>
-                6. Диски с отверстиями и без отверстий;<br>
-                7. Производство деталей (фланцы, матрицы, пуансоны, штампы, днища, обечайки и т.д.), по чертежам заказчика.
-            </p>
+        <section id="home">
+            <h2>Главная</h2>
+            <p>ООО «Техсталь» обеспечивает предприятия России кованными и литыми заготовками из различных марок стали. По требованию заказчика поставка продукции осуществляется с механической обработкой и ультразвуковым контролем, поставка заготовок для АЭС с приемкой уполномоченной организации.</p>
+            <p>Мы предлагаем поковки различной конфигурации и размеров, в т.ч. крупногабаритные, изготовленные в соответствии с требованиями установленных ГОСТ и ОСТ (ГОСТ 8479-70, ГОСТ 25054-81, ОСТ 108.030.113-87, ОСТ 108.109.01-92 и т.д.), а также по ТУ заказчика:</p>
+            <ul>
+                <li>Валы гладкие круглого и прямоугольного сечения;</li>
+                <li>Валы круглого сечения с уступами;</li>
+                <li>Кольца раскатные;</li>
+                <li>Цилиндры с отверстиями;</li>
+                <li>Плиты и штамповые кубики;</li>
+                <li>Диски с отверстиями и без отверстий;</li>
+                <li>Производство деталей (фланцы, матрицы, пуансоны, штампы, днища, обечайки и т.д.), по чертежам заказчика.</li>
+            </ul>
         </section>
-        <section id="services">
-            <h2>Услуги</h2>
-            <p>
-                Мы предлагаем широкий спектр услуг по обработке и производству металла.
-            </p>
-        </section>
-        <section id="contacts">
-            <h2>Контакты</h2>
-            <p>
-                Свяжитесь с нами по номеру +7 (917) 417-62-58 или по электронной почте techsteel@bk.ru.
-            </p>
-            <div class="contact-form">
-                <button onclick="openMessageModal()">Отправить сообщение</button>
+        <section id="forgings">
+            <h2>Поковки</h2>
+            <p class="rtecenter">Марочник сталей поковок</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Сталь</th>
+                            <th>Марочник по стандартам РФ</th>
+                            <th>Марочник по зарубежным стандартам</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Конструкционные углеродистые</td>
+                            <td>10, 20, 35, 40, 45, 50, 55, 70, ОС, 22К-Ш и другие</td>
+                            <td>СК45, СК60, 080М40, 070М20, AISI 1018, AISI 1045 и другие</td>
+                        </tr>
+                        <tr>
+                            <td>Конструкционные низколегированные</td>
+                            <td>09Г2С, 10ХСНД, 15ГС, 17Г1С, 65Г и другие</td>
+                            <td>5355J2, 42СгМо4, AISI 4140, AISI 4340 и другие</td>
+                        </tr>
+                        <tr>
+                            <td>Конструкционные легированные</td>
+                            <td>40Х, 20Г, 12Х2НВФА и другие</td>
+                            <td>34CrNiMo6, AISI 4340 и другие</td>
+                        </tr>
+                        <tr>
+                            <td>Инструментальные</td>
+                            <td>9Х1, 5ХНВС, У8А и другие</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Коррозионно-стойкие (нержавеющие)</td>
+                            <td>08-12Х18Н10Т, 20Х13 и другие</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Жаростойкие и жаропрочные</td>
+                            <td>15ХМ, 15Х5М и другие</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </section>
+        <section id="castings">
+            <h2>Литье</h2>
+            <p>ООО "Техсталь" предлагает отливки из чугуна и бронзы.</p>
+        </section>
+        <section id="contacts" style="margin-bottom: 100px;">
+            <h2>Контакты</h2>
+            <p>Адрес: 454100, г. Нефтекамск, ул. Трактовая, д. 12П/З</p>
+            <p>E-mail: <a href="mailto:techsteel@bk.ru">techsteel@bk.ru</a></p>
+            <p>Телефон для связи: +7 (917) 417-62-58</p>
         </section>
     </main>
     <footer>
-        ООО «Техсталь», 2025. Все права защищены.
+        <p>&copy; 2025 ООО "Техсталь"</p>
     </footer>
-
-    <div id="overlay" onclick="closeMessageModal()"></div>
-
-    <div id="message-modal">
-        <h3>Отправить сообщение</h3>
-        <input type="text" id="fio" placeholder="ФИО" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="tel" id="phone" placeholder="Телефон" required>
-        <textarea id="comments" placeholder="Комментарий"></textarea>
-        <input type="file" id="file">
-    </div>
 </body>
 </html>
+
+
